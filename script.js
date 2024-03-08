@@ -87,7 +87,7 @@ const dataSet = [
     id: 15,
     name: "Greedo",
     pic: "https://vignette.wikia.nocookie.net/starwars/images/c/c6/Greedo.jpg",
-    homeworld: "Rodia",
+    homeworld: "rodia",
   },
   {
     id: 16,
@@ -111,6 +111,7 @@ const dataSet = [
     id: 20,
     name: "Yoda",
     pic: "https://vignette.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png",
+    homeworld: "other"
   },
   {
     id: 21,
@@ -131,7 +132,7 @@ function renderCharacters() {
                     <img src="${character.pic}">
                     <h4>${character.id}</h4>
                     <p>${character.name}</p>
-                    <p>Homeworld: ${character.homeworld}</p>
+                    <p>${character.homeworld}</p>
                   </div>`;
     }
     renderBtn.textContent = "Hide Characters";
@@ -139,4 +140,72 @@ function renderCharacters() {
     row.innerHTML = "";
     renderBtn.textContent = "Show Characters";
   }
+}
+
+function newArray(dataSet, key) {
+  return dataSet.map((item) => item[key]);
+}
+
+let homeworldRaw = newArray(dataSet, "homeworld");
+
+const filtered = homeworldRaw.map((item) => item ?? "other");
+
+// console.log(filtered);
+
+let homeworldUnique = Array.from(new Set(filtered));
+
+// console.log(homeworldUnique);
+
+let homeworldLowercase = homeworldUnique.map((str) => str.toLowerCase());
+// console.log(homeworldLowercase);
+
+const homeworlds = homeworldLowercase;
+
+// console.log(homeworlds);
+
+const homeworldsFilterContainer = document.querySelector(
+  ".homeworlds-filter-container"
+);
+
+for (let i = 0; i < homeworlds.length; i++) {
+  homeworldsFilterContainer.innerHTML += `
+  <div class="form-check">
+    <input class="form-check-input" type="radio"  name="homeworld" id="homeworld-${homeworlds[i]}" value="${homeworlds[i]}">
+    <label class="form-check-label" for="homeworld-${homeworlds[i]}">${homeworlds[i]}</label>
+  </div>
+  `;
+}
+
+const filteredHomeworld = document.querySelectorAll(".form-check-input");
+
+for (let k = 0; k < filteredHomeworld.length; k++) {
+  filteredHomeworld[k].addEventListener("click", function () {
+    const selectedHomeworlds = dataSet.filter(
+      (selectedHomeworld) =>
+        selectedHomeworld.homeworld == filteredHomeworld[k].value
+    );
+
+    if (row.innerHTML == "") {
+      for (const selected of selectedHomeworlds) {
+        row.innerHTML += `
+                    <div class="col-lg-3 col-md-4 charactersCard">
+                      <img src="${selected.pic}">
+                      <h4>${selected.id}</h4>
+                      <p>${selected.name}</p>
+                      <p>${selected.homeworld}</p>
+                    </div>`;
+      }
+    } else if (row.innerHTML != "") {
+      row.innerHTML = "";
+      for (const selected of selectedHomeworlds) {
+        row.innerHTML += `
+                    <div class="col-lg-3 col-md-4 charactersCard">
+                      <img src="${selected.pic}">
+                      <h4>${selected.id}</h4>
+                      <p>${selected.name}</p>
+                      <p>${selected.homeworld}</p>
+                    </div>`;
+      }
+    }
+  });
 }

@@ -1,21 +1,43 @@
-.renderBtn{
-    padding: 10px;   
+.renderBtn {
+  padding: 10px;
 }
 
-body{
-    background-color: #3e3e3e;
+body {
+  background-color: #3e3e3e;
 }
 
-img{
-    height: 300px;
+img {
+  height: 300px;
 }
 
-
-.content{
-    margin-top: 100px;
+.content {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.charactersCard{
-    background-color: aliceblue;
-    padding: 40px;
+.charactersCard {
+  background-color: rgb(115, 116, 118);
+  border: 2px solid black;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.form-check {
+  color: aliceblue;
+}
+
+.wrapper{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeworlds-filter-container{
+  display: flex;
+  gap: 1rem;
+  margin-left: 10px;
 }
