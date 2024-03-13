@@ -8,6 +8,7 @@ body {
 
 img {
   height: 300px;
+  width: 100%;
 }
 
 .content {
@@ -29,14 +30,14 @@ img {
   color: aliceblue;
 }
 
-.wrapper{
+.wrapper {
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.homeworlds-filter-container{
+.homeworlds-filter-container {
   display: flex;
   gap: 1rem;
   margin-left: 10px;

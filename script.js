@@ -87,7 +87,7 @@ const dataSet = [
     id: 15,
     name: "Greedo",
     pic: "https://vignette.wikia.nocookie.net/starwars/images/c/c6/Greedo.jpg",
-    homeworld: "rodia",
+    homeworld: "Rodia",
   },
   {
     id: 16,
@@ -111,7 +111,6 @@ const dataSet = [
     id: 20,
     name: "Yoda",
     pic: "https://vignette.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png",
-    homeworld: "other"
   },
   {
     id: 21,
@@ -148,7 +147,7 @@ function newArray(dataSet, key) {
 
 let homeworldRaw = newArray(dataSet, "homeworld");
 
-const filtered = homeworldRaw.map((item) => item ?? "other");
+let filtered = homeworldRaw.map((item) => item ?? "other");
 
 // console.log(filtered);
 
@@ -159,7 +158,7 @@ let homeworldUnique = Array.from(new Set(filtered));
 let homeworldLowercase = homeworldUnique.map((str) => str.toLowerCase());
 // console.log(homeworldLowercase);
 
-const homeworlds = homeworldLowercase;
+let homeworlds = homeworldLowercase;
 
 // console.log(homeworlds);
 
@@ -176,17 +175,18 @@ for (let i = 0; i < homeworlds.length; i++) {
   `;
 }
 
-const filteredHomeworld = document.querySelectorAll(".form-check-input");
+const checkInputs = document.querySelectorAll(".form-check-input");
 
-for (let k = 0; k < filteredHomeworld.length; k++) {
-  filteredHomeworld[k].addEventListener("click", function () {
-    const selectedHomeworlds = dataSet.filter(
-      (selectedHomeworld) =>
-        selectedHomeworld.homeworld == filteredHomeworld[k].value
+checkInputs.forEach(function (checkInput) {
+  checkInput.addEventListener("click", function () {
+    selectedInput = this.value;
+
+    const filteredHomeworld = dataSet.filter(
+      (item) => item.homeworld == selectedInput
     );
 
-    if (row.innerHTML == "") {
-      for (const selected of selectedHomeworlds) {
+    if (row == "") {
+      for (const selected of filteredHomeworld) {
         row.innerHTML += `
                     <div class="col-lg-3 col-md-4 charactersCard">
                       <img src="${selected.pic}">
@@ -195,9 +195,9 @@ for (let k = 0; k < filteredHomeworld.length; k++) {
                       <p>${selected.homeworld}</p>
                     </div>`;
       }
-    } else if (row.innerHTML != "") {
+    } else {
       row.innerHTML = "";
-      for (const selected of selectedHomeworlds) {
+      for (const selected of filteredHomeworld) {
         row.innerHTML += `
                     <div class="col-lg-3 col-md-4 charactersCard">
                       <img src="${selected.pic}">
@@ -208,4 +208,4 @@ for (let k = 0; k < filteredHomeworld.length; k++) {
       }
     }
   });
-}
+});
