@@ -127,7 +127,7 @@ function renderCharacters() {
   if (row.innerHTML == "") {
     for (const character of dataSet) {
       row.innerHTML += `
-                  <div class="col-lg-3 col-md-4 charactersCard">
+                  <div class="col-lg-3 charactersCard">
                     <img src="${character.pic}">
                     <h4>${character.id}</h4>
                     <p>${character.name}</p>
