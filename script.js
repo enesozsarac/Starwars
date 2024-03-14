@@ -129,8 +129,7 @@ function renderCharacters() {
       row.innerHTML += `
                   <div class="col-lg-3 charactersCard">
                     <img src="${character.pic}">
-                    <h4>${character.id}</h4>
-                    <p>${character.name}</p>
+                    <h5>${character.name}</h5>
                     <p>${character.homeworld || "other"}</p>
                   </div>`;
     }
