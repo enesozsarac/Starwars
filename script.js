@@ -131,7 +131,7 @@ function renderCharacters() {
                     <img src="${character.pic}">
                     <h4>${character.id}</h4>
                     <p>${character.name}</p>
-                    <p>${character.homeworld}</p>
+                    <p>${character.homeworld || "other"}</p>
                   </div>`;
     }
     renderBtn.textContent = "Hide Characters";
