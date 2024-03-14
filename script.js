@@ -188,7 +188,7 @@ checkInputs.forEach(function (checkInput) {
     if (row == "") {
       for (const selected of filteredHomeworld) {
         row.innerHTML += `
-                    <div class="col-lg-3 col-md-4 charactersCard">
+                    <div class="col-lg-3 charactersCard">
                       <img src="${selected.pic}">
                       <h4>${selected.id}</h4>
                       <p>${selected.name}</p>
@@ -199,7 +199,7 @@ checkInputs.forEach(function (checkInput) {
       row.innerHTML = "";
       for (const selected of filteredHomeworld) {
         row.innerHTML += `
-                    <div class="col-lg-3 col-md-4 charactersCard">
+                    <div class="col-lg-3 charactersCard">
                       <img src="${selected.pic}">
                       <h4>${selected.id}</h4>
                       <p>${selected.name}</p>
